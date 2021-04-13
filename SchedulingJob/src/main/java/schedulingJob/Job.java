@@ -1,12 +1,12 @@
 package schedulingJob;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Job {
 
 	private int id;
 	private String description;
-	private Date maxConclusionDateTime;
+	private LocalDateTime maxConclusionDateTime;
 	private int estimatedExecutionTimeInMinutes;
 	
 	public int getId() {
@@ -25,11 +25,11 @@ public class Job {
 		this.description = description;
 	}
 	
-	public Date getMaxConclusionDateTime() {
+	public LocalDateTime getMaxConclusionDateTime() {
 		return maxConclusionDateTime;
 	}
 	
-	public void setMaxConclusionDateTime(Date maxConclusionDateTime) {
+	public void setMaxConclusionDateTime(LocalDateTime maxConclusionDateTime) {
 		this.maxConclusionDateTime = maxConclusionDateTime;
 	}
 	
