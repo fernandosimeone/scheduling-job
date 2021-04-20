@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JobScheduler {
-
-	// TODO Comentar código
-	// TODO Externalizar mensagens nas exceções
 	
 	private static final int GROUP_MAX_EXECUTION_TIME_IN_MINUTES = 480;
 	
