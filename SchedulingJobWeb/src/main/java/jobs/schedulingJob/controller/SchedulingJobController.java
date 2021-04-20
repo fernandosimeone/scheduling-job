@@ -1,5 +1,6 @@
 package jobs.schedulingJob.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,24 @@ public class SchedulingJobController {
 	}
 	
 	@PostMapping("/jobs/scheduling")
-	public List<List<Job>> ScheduleJobs(@RequestBody JobSchedulingParametersDto parameters) {
+	public int[][] ScheduleJobs(@RequestBody JobSchedulingParametersDto parameters) {
 		
 		List<List<Job>> scheduling =  jobSchedulerService.schedule(
 				parameters.getExecutionWindowStart(), 
 				parameters.getExecutionWindowEnd(), 
 				parameters.getJobs());
 		
-		return scheduling;
+		return formatSchedulingResult(scheduling);
 	}
-
+	
+	private int [][] formatSchedulingResult(List<List<Job>> scheduling) {
+		
+		int [][] result = new int[scheduling.size()][];
+		
+		for (int i = 0; i < scheduling.size(); i++) {
+			result[i] = scheduling.get(i).stream().mapToInt(Job::getId).toArray(); 
+		}
+		
+		return result;
+	}
 }
